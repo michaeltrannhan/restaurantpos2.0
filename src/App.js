@@ -357,21 +357,15 @@ class App extends Component {
 
     return rv;
   }
-  setQuantity = (id, quantity) => {
-    console.log("id: " + id + " quantity: " + quantity);
+  setQuantity = (index, quantity) => {
     let cart = this.state.cart;
-    let i = 0;
 
-    for (i; i < cart.length; i++) {
-      if (cart[i].id === id) break;
-    }
-
-    if (quantity === 0) { cart.splice(i, 1) }
+    if (quantity === 0) { cart.splice(index, 1) }
     else {
-      cart[i] = {
-        id: cart[i].id,
+      cart[index] = {
+        id: cart[index].id,
         quantity: quantity,
-        sideDish: cart[i].sideDish,
+        sideDish: cart[index].sideDish,
       }
     }
 

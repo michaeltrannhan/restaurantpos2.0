@@ -110,7 +110,7 @@ class Cart extends Component {
 
             return <Item
               key={index}
-              id={c.id + 1}
+              id={index + 1}
               name={c.name}
               image={c.image}
               totalPrice={totalPrice}
