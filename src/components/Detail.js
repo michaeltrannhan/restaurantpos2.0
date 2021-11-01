@@ -65,7 +65,7 @@ export default class Detail extends Component {
   }
 
   onClose = () => {
-    this.setState({ checked: [] })
+    this.setState({ checked: [], quantity: 1 })
     this.props.onClose()
   }
 
