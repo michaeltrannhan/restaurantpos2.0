@@ -1,0 +1,109 @@
+.menu-container {
+    /* background: grey; */
+    width: 650px;
+    height: 578px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.menu-category-font {
+    margin-left: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-line {
+    position: relative;
+    background: rgb(209, 209, 209);
+    left: 100px;
+    top: -10px;
+    width: 510px;
+    height: 1px;
+}
+
+.menu-main-container::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-main-container {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: grid;
+    position: relative;
+    left: -15px;
+    width: 650px;
+    height: 540px;
+    grid-area: bottom;
+    grid-gap: 27.5px;
+    grid-template-columns: 180px 180px 180px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+
+.menu-item-container {
+    width: 180px;
+    height: 210px;
+    background: #F8F8F8;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-left: 27.5px;
+    margin-top: 20px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.menu-item-container img {
+    display: block;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.menu-item-description {
+    width: 180px;
+    height: 80px;
+    margin-top: 10px;
+    background: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px;
+}
+
+.menu-text-wrap {
+    white-space: nowrap;
+    max-height: 20px;
+    width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menu-item-text {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.menu-price {
+    margin-top: 10px;
+    font-size: 12px;
+    width: 100px;
+    color: red;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu-cart {
+    margin-top: 10px;
+    margin-left: 20px;
+    fill: white;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    padding: 7px;
+    border-radius: 10px;
+    background: red;
+    cursor: pointer;
+}

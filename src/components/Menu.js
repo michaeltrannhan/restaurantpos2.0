@@ -1,4 +1,5 @@
-import React, { useState, Component } from 'react'
+import React, { useState, Component } from 'react';
+import './Menu.css';
 import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 
 const Item = ({ id, name, price, image, onClick }) => {
@@ -46,7 +47,7 @@ const Item = ({ id, name, price, image, onClick }) => {
           </p>
         </div>
         <p className="menu-item-text menu-price">
-          Kr {price}
+          Kr {price.toFixed(2)}
         </p>
         <CartLogo className="menu-cart"
           style={cart}

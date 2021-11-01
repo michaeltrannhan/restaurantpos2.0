@@ -1,11 +1,10 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState } from 'react';
+import './Cart.css';
 import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 import { ReactComponent as Plus } from "./assets/svg/plus.svg";
 import { ReactComponent as Minus } from "./assets/svg/minus.svg";
 
-import CokeMenu from "./assets/png/menu/hamburger.png"
-
-const Item = ({ id, name, image, totalPrice, quantity, detail, setQuantity }) => {
+const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity }) => {
   const [plus, setPlus] = useState("red")
   const [minus, setMinus] = useState("#2C3A57")
 
@@ -48,7 +47,7 @@ const Item = ({ id, name, image, totalPrice, quantity, detail, setQuantity }) =>
           {name}
         </p>
         <div style={{ minHeight: "10px" }}>
-          {detail.map((d, index) => {
+          {sideDish.map((d, index) => {
             return (
               <p
                 className="cart-text-wrap cart-item-text cart-item-detail"
@@ -80,85 +79,15 @@ const Item = ({ id, name, image, totalPrice, quantity, detail, setQuantity }) =>
           onMouseUp={onMouseUpPlus}
         />
       </div>
-      <span className="cart-item-price">Kr {totalPrice}</span>
+      <span className="cart-item-price">Kr {totalPrice.toFixed(2)}</span>
       <span className="cart-item-price cart-item-tax">
-        (Incl. tax 10% = Kr {Math.round(totalPrice) / 100})
+        (Incl. tax 10% = Kr {(totalPrice / 100).toFixed(2)})
       </span>
     </div >
   )
 }
 
 class Cart extends Component {
-  cart = [
-    {
-      id: 0,
-      quantity: 1,
-      detail: []
-    },
-    {
-      id: 4,
-      quantity: 1,
-      detail: []
-    },
-    {
-      id: 8,
-      quantity: 1,
-      detail: [
-        {
-          desc: "Not raw",
-          price: "100"
-        }
-      ]
-    },
-    {
-      id: 9,
-      quantity: 9999,
-      detail: [
-        {
-          desc: "Cup size: Humongous",
-          price: 99999
-        },
-        {
-          desc: "Face: Freaking cute",
-          price: 8888
-        },
-        {
-          desc: "Existence: Yes pls :(",
-          price: 6969
-        },
-        {
-          desc: "2D: No pls :(",
-          price: 10
-        },
-      ]
-    },
-  ]
-  item = {
-    id: 1,
-    name: "Fuck Fuck Fuck Fuck Fuck  Fuck  Fuck  Fuck Fuck" +
-      "Fuck  Fuck Fuck Fuck Fuck Fuck Fuck Fuck Fuck Fuck",
-    image: CokeMenu,
-    price: 1200,
-    quantity: 5,
-    detail: [
-      {
-        desc: "Cup size: Humongous",
-        price: 99999
-      },
-      {
-        desc: "Face: Freaking cute",
-        price: 8888
-      },
-      {
-        desc: "Existence: Yes pls :(",
-        price: 6969
-      },
-      {
-        desc: "2D: No pls :(",
-        price: 10
-      },
-    ]
-  }
 
   render() {
     var totalPay = 0;
@@ -173,7 +102,7 @@ class Cart extends Component {
         <div className="cart-main-container">
           {this.props.cart.map((c, index) => {
             var totalPrice = c.price;
-            c.detail.forEach((d) => {
+            c.sideDish.forEach((d) => {
               totalPrice += d.price
             })
             totalPrice = Math.round(totalPrice * c.quantity * 100) / 100
@@ -186,7 +115,7 @@ class Cart extends Component {
               image={c.image}
               totalPrice={totalPrice}
               quantity={c.quantity}
-              detail={c.detail}
+              sideDish={c.sideDish}
               setQuantity={this.props.setQuantity}
             />
           })}

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './Category.css'
 import { ReactComponent as Left } from "./assets/svg/left_arrow.svg";
 import { ReactComponent as Right } from "./assets/svg/right_arrow.svg";
 
