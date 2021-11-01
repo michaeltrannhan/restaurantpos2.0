@@ -126,7 +126,7 @@ export default class Detail extends Component {
                   fontSize: "15px",
                   fontWeight: "normal"
                 }} >
-                  Selected quantity 0
+                  Selected quantity: {this.state.checked.length}
                 </span>
               </h3>
               <h3 style={{
