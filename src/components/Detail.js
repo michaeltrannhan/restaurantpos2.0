@@ -40,7 +40,8 @@ export default class Detail extends Component {
   }
 
   setQuantity = (quantity) => {
-    this.setState({ quantity: quantity })
+    if (quantity > 0)
+      this.setState({ quantity: quantity })
   }
 
   checkSideDish = (index) => {
