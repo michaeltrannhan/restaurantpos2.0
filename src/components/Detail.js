@@ -61,6 +61,11 @@ export default class Detail extends Component {
       quantity: this.state.quantity,
       sideDish: this.state.checked
     })
+    this.onClose()
+  }
+
+  onClose = () => {
+    this.setState({ checked: [] })
     this.props.onClose()
   }
 
@@ -73,7 +78,7 @@ export default class Detail extends Component {
         <div className="popup-inner">
           <div className="header">
             ADD TO CART
-            <Close className="close-button" onClick={this.props.onClose}></Close>
+            <Close className="close-button" onClick={this.onClose}></Close>
           </div>
           <div className="detail-container">
             <div className="image-container">
