@@ -3,9 +3,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-}
-
-.no-select {
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -17,8 +14,7 @@
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+    /* Non-prefixed version, currently */
 }
 
 .app {
@@ -33,6 +29,7 @@
 .home-container {
     background: #fff;
     padding: 10px;
+    height: 70px;
 }
 
 .home-logo {
@@ -59,5 +56,10 @@
     margin-left: 15px;
     font-size: 20px;
     font-weight: bold;
-    color: #2C3A57
+    color: #2C3A57;
+}
+
+.home-label {
+    position: relative;
+    left: 30%;
 }

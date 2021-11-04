@@ -1,4 +1,6 @@
 import React, { Component, useState } from 'react';
+import { Link } from 'react-router-dom'
+
 import './Cart.css';
 import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 import { ReactComponent as Plus } from "./assets/svg/plus.svg";
@@ -135,11 +137,16 @@ class Cart extends Component {
           }}>
             (Incl. tax 10% = Kr {Math.round(totalPay) / 100})
           </p>
-          <div className="cart-payment">
-            <p>
-              PAYMENT
-            </p>
-          </div>
+          <Link to="/payment" style={{ textDecoration: 'none' }}>
+            <div
+              className="cart-payment"
+              onClick={() => { this.props.setTotalPay(totalPay * 1.1) }}
+            >
+              <p>
+                PAYMENT
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     )
