@@ -51,7 +51,13 @@
     margin-left: 27.5px;
     margin-top: 20px;
     overflow: hidden;
-    cursor: default;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.menu-item-container:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .menu-item-container img {
@@ -106,4 +112,5 @@
     border-radius: 10px;
     background: red;
     cursor: pointer;
+    z-index: 99
 }

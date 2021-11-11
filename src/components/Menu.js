@@ -1,41 +1,24 @@
 import React, { useState, Component } from 'react';
 import './Menu.css';
-import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
+import { ReactComponent as CartLogo } from "./assets/svg/mini-cart.svg";
+import { ReactComponent as CartHover } from "./assets/svg/hover-cart.svg";
 
-const Item = ({ id, name, price, image, onClick }) => {
-  const [shadow, setShadow] = useState("1px 1px 10px rgba(0, 0, 0, 0.1)")
-  const [cart, setCart] = useState({ background: "red", fill: "white" })
-
-  const onMouseEnterFrame = () => {
-    setShadow("1px 1px 10px rgba(0, 0, 0, 0.5)");
-  }
-
-  const onMouseLeaveFrame = () => {
-    setShadow("1px 1px 10px rgba(0, 0, 0, 0.1)")
-  }
+const Item = ({ id, name, price, image, onClick, onClickCart }) => {
+  const [Logo, setLogo] = useState(CartLogo)
 
   const onMouseEnterCart = () => {
-    setCart({ background: "#E9F0FF", fill: "red" })
+    setLogo(CartHover)
   }
 
   const onMouseLeaveCart = () => {
-    setCart({ background: "red", fill: "white" })
-  }
-
-  const onMouseDownCart = () => {
-    setCart({ background: "#2C3A57", fill: "red" })
-  }
-
-  const onMouseUpCart = () => {
-    setCart({ background: "#E9F0FF", fill: "red" })
-    onClick(id);
+    setLogo(CartLogo)
   }
 
   return (
-    <div className="menu-item-container"
-      style={{ boxShadow: shadow }}
-      onMouseEnter={onMouseEnterFrame}
-      onMouseLeave={onMouseLeaveFrame}>
+    <div
+      className="menu-item-container"
+      onClick={onClick}
+    >
       <img src={image} alt="Cupcake"></img>
       <div className="menu-item-description" >
         <div>
@@ -47,14 +30,12 @@ const Item = ({ id, name, price, image, onClick }) => {
           </p>
         </div>
         <p className="menu-item-text menu-price">
-          Kr {price.toFixed(2)}
+          ${price.toFixed(2)}
         </p>
-        <CartLogo className="menu-cart"
-          style={cart}
+        <Logo className="menu-cart"
           onMouseEnter={onMouseEnterCart}
           onMouseLeave={onMouseLeaveCart}
-          onMouseDown={onMouseDownCart}
-          onMouseUp={onMouseUpCart}
+          onClick={onClickCart}
         />
       </div>
     </div>
@@ -76,7 +57,15 @@ class Menu extends Component {
               name={item.name}
               price={item.price}
               image={item.image}
-              onClick={this.props.onClick}
+              onClick={() => { this.props.onClick(item.id) }}
+              onClickCart={(e) => {
+                e.stopPropagation();
+                this.props.onClickCart({
+                  id: item.id,
+                  quantity: 1,
+                  sideDish: []
+                })
+              }}
             />
           })}
         </section>

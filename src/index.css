@@ -27,9 +27,11 @@
 }
 
 .home-container {
+    position: relative;
     background: #fff;
     padding: 10px;
     height: 70px;
+    z-index: 1;
 }
 
 .home-logo {
@@ -62,4 +64,111 @@
 .home-label {
     position: relative;
     left: 30%;
+}
+
+.search-container {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 310px;
+    width: 300px;
+}
+
+.search-container div {
+    width: 100%;
+    background-color: #E9F0FF;
+    overflow: scroll;
+    border-radius: 10px;
+    max-height: 350px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+}
+
+.search-container div::-webkit-scrollbar {
+    display: none;
+}
+
+.search-container div div {
+    position: relative;
+    overflow: unset;
+    width: 300px;
+    height: 80px;
+    color: black;
+    padding: 12px 0;
+    border-radius: unset;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    box-shadow: unset;
+}
+
+.search-container div div:hover {
+    background: #2C3A57;
+    color: white;
+}
+
+.search-container div div:hover p {
+    color: rgb(255, 166, 166);
+}
+
+.search-container div div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: unset;
+}
+
+.search-container div div div:hover {
+    background: unset;
+}
+
+.search-container div div div img {
+    height: 40px;
+    position: relative;
+    top: calc(50% - 20px);
+    display: block;
+    margin: auto;
+}
+
+.search-container div div h5 {
+    margin-left: 80px;
+    line-height: 90%;
+    font-size: 17px;
+}
+
+.search-container div div p {
+    margin: 5px 0 0 80px;
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+
+.search {
+    display: block;
+    margin: 0 0 5px auto;
+    width: 150px;
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+    border-radius: 99px;
+    background: url("./components/assets/svg/search.svg");
+    background-repeat: no-repeat;
+    background-position: 4px 50%;
+    background-size: 25px 25px;
+    padding-left: 30px;
+    background-color: #E9F0FF;
+    color: #2C3A57;
+    transition: all 0.3s ease 0s;
+}
+
+.search::placeholder {
+    color: #2C3A57;
+}
+
+.search:focus {
+    width: 300px;
 }

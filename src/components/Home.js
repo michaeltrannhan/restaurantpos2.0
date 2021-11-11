@@ -52,7 +52,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 1, name: "Grilled squid satay", image: GrilledSquid, price: 241.69,
@@ -71,7 +72,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 2, name: "Chicken nuggets", image: ChickenNuggets, price: 51241.12,
@@ -90,7 +92,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 3, name: "Coca Cola", image: CokeMenu, price: 5126.25,
@@ -109,7 +112,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 4, name: "Kimchi", image: Kimchi, price: 6426.25,
@@ -128,7 +132,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 5, name: "Tomato & potato hybridization", image: TomatoPotato, price: 862.64,
@@ -147,7 +152,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 6, name: "Salad", image: Salad, price: 325.64,
@@ -166,7 +172,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 7, name: "Medium rare steak", image: Steak, price: 982.22,
@@ -185,7 +192,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 8, name: "Raw pork", image: Pork, price: 77.22,
@@ -208,7 +216,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
   {
     id: 9, name: "Don't ask me, this is just an example", image: Weeb, price: 10.01,
@@ -239,7 +248,8 @@ const food = [
       additives: "03",
       baking: "040",
       decor: "04"
-    }
+    },
+    categoryID: 0
   },
 ]
 
@@ -249,6 +259,8 @@ class Home extends Component {
     chosen: 0,
     curIdx: 0,
     chosenFood: null,
+    editIndex: null,
+    searchResult: [],
     cart: [
       {
         id: 0,
@@ -286,6 +298,21 @@ class Home extends Component {
         sideDish: [0, 1, 2, 3]
       },
     ],
+  }
+
+  // Search
+  onSearch = (e) => {
+    var value = e.target.value.toLowerCase()
+    if (!value)
+      this.setState({ searchResult: [] })
+    else {
+      var res = []
+      for (var i = 0; i < food.length; i++) {
+        if (food[i].name.toLowerCase().includes(value))
+          res.push(i)
+      }
+      this.setState({ searchResult: res })
+    }
   }
 
   // Category
@@ -335,10 +362,14 @@ class Home extends Component {
     return temp;
   }
 
+  // Menu
   setChosenFood = (id) => {
     this.setState({ chosenFood: id })
   }
 
+  getMenu = () => {
+    return food
+  }
 
   // Cart
   getCartItems = () => {
@@ -372,9 +403,13 @@ class Home extends Component {
 
     this.setState({ cart: cart })
   }
+  editItem = (index) => {
+    this.setState({ editIndex: index })
+  }
 
   // Detail
   addToCart = (item) => {
+    if (item.quantity === 0) return
     let cart = this.state.cart;
     let index = cart.findIndex(
       (i) => {
@@ -394,6 +429,16 @@ class Home extends Component {
 
     this.setState({ cart: cart })
   }
+  editCartItem = (item) => {
+    let cart = this.state.cart
+    if (item.quantity === 0) {
+      cart.splice(this.state.editIndex, 1)
+      return
+    }
+    cart[this.state.editIndex].quantity = item.quantity
+    cart[this.state.editIndex].sideDish = item.sideDish
+    this.setState({ cart: cart })
+  }
 
   render() {
 
@@ -405,6 +450,34 @@ class Home extends Component {
             />
           </button>
           <p className="home-font" > Back to Home </p>
+          <div className="search-container">
+            <input
+              className="search"
+              type="text"
+              placeholder="Search.."
+              onChange={this.onSearch}
+              onBlur={(e) => {
+                e.target.value = ''
+                this.setState({ searchResult: [] })
+              }}
+            />
+            <div>
+              {this.state.searchResult.map(index => {
+                return (
+                  <div
+                    key={index}
+                    onMouseDown={() => { this.setChosenFood(index) }}
+                  >
+                    <div>
+                      <img src={food[index].image} alt={food[index].name} />
+                    </div>
+                    <h5>{food[index].name} </h5>
+                    <p>${food[index].price.toFixed(2)} </p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
         <Category
           categories={this.getCategories()}
@@ -419,19 +492,34 @@ class Home extends Component {
         />
         <Menu
           category={categories[this.state.chosen].name}
-          items={food}
+          items={this.getMenu()}
           onClick={this.setChosenFood}
+          onClickCart={this.addToCart}
         />
         <Cart
           cart={this.getCartItems()}
           setQuantity={this.setQuantity}
+          editItem={this.editItem}
           setTotalPay={this.props.setTotalPay}
         />
         <Detail
-          trigger={this.state.chosenFood !== null}
-          item={this.state.chosenFood !== null ? food[this.state.chosenFood] : null}
-          onClose={() => { this.setChosenFood(null) }}
-          onSubmit={this.addToCart}
+          trigger={this.state.editIndex !== null || this.state.chosenFood !== null}
+          item={this.state.editIndex !== null ? food[this.state.cart[this.state.editIndex].id] :
+            (this.state.chosenFood !== null ? food[this.state.chosenFood] :
+              null)}
+          itemInfo={this.state.editIndex ?
+            {
+              quantity: this.state.cart[this.state.editIndex].quantity,
+              checked: this.state.cart[this.state.editIndex].sideDish
+            } :
+            null}
+          onClose={() => {
+            if (this.state.editIndex !== null)
+              this.setState({ editIndex: null })
+            else
+              this.setChosenFood(null)
+          }}
+          onSubmit={this.state.editIndex ? this.editCartItem : this.addToCart}
         />
       </div>
     );

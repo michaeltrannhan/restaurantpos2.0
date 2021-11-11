@@ -6,7 +6,7 @@ import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 import { ReactComponent as Plus } from "./assets/svg/plus.svg";
 import { ReactComponent as Minus } from "./assets/svg/minus.svg";
 
-const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity }) => {
+const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, editItem }) => {
   const [plus, setPlus] = useState("red")
   const [minus, setMinus] = useState("#2C3A57")
 
@@ -37,7 +37,10 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity }) 
   }
 
   return (
-    <div className="cart-item-container">
+    <div
+      className="cart-item-container"
+      onClick={editItem}
+    >
       <div className="cart-item-image-wrap">
         <img src={image} alt="Coke" className="cart-item-image" ></img>
       </div>
@@ -55,7 +58,7 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity }) 
                 className="cart-text-wrap cart-item-text cart-item-detail"
                 key={index}
               >
-                {d.desc} <span style={{ float: "right", color: "red", fontWeight: "bold" }}>Kr {d.price}</span>
+                {d.desc} <span style={{ float: "right", color: "red", fontWeight: "bold" }}>${d.price}</span>
               </p>
             )
           })}
@@ -81,9 +84,9 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity }) 
           onMouseUp={onMouseUpPlus}
         />
       </div>
-      <span className="cart-item-price">Kr {totalPrice.toFixed(2)}</span>
+      <span className="cart-item-price">${totalPrice.toFixed(2)}</span>
       <span className="cart-item-price cart-item-tax">
-        (Incl. tax 10% = Kr {(totalPrice / 100).toFixed(2)})
+        (Incl. tax 10% = ${(totalPrice / 100).toFixed(2)})
       </span>
     </div >
   )
@@ -119,6 +122,7 @@ class Cart extends Component {
               quantity={c.quantity}
               sideDish={c.sideDish}
               setQuantity={this.props.setQuantity}
+              editItem={() => { this.props.editItem(index) }}
             />
           })}
         </div>
@@ -128,14 +132,18 @@ class Cart extends Component {
             float: 'right',
             color: "red",
             fontSize: "25px",
+            minWidth: "135px",
+            textAlign: "right"
           }}>
-            Kr {Math.round(totalPay * 100) / 100}
+            ${Math.round(totalPay * 100) / 100}
           </p>
           <p style={{
             float: 'right',
             fontSize: "15px",
+            minWidth: "180px",
+            textAlign: "right"
           }}>
-            (Incl. tax 10% = Kr {Math.round(totalPay) / 100})
+            (Incl. tax 10% = ${Math.round(totalPay) / 100})
           </p>
           <Link to="/payment" style={{ textDecoration: 'none' }}>
             <div

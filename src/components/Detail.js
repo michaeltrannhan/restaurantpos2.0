@@ -16,18 +16,18 @@ const Factor = ({ name, content }) => {
   )
 }
 
-const SideDish = ({ item, onChange }) => {
+const SideDish = ({ item, onChange, checked }) => {
   return (
-    <label class="check-container">{item.desc}
-      <input type="checkbox" onChange={onChange} />
-      <span class="check-mark"></span>
+    <label className="check-container">{item.desc}
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      <span className="check-mark"></span>
       <span style={{
         color: "red",
         fontWeight: "bold",
         float: "right",
         marginRight: "30px"
       }}>
-        kr {item.price}
+        ${item.price}
       </span>
     </label>
   )
@@ -35,17 +35,28 @@ const SideDish = ({ item, onChange }) => {
 
 export default class Detail extends Component {
   state = {
+    init: false,
     quantity: 1,
     checked: []
   }
 
   setQuantity = (quantity) => {
-    if (quantity > 0)
-      this.setState({ quantity: quantity })
+    var extra = this.state.init ? {} : {
+      checked: this.props.itemInfo.checked
+    }
+    if (quantity >= 0)
+      this.setState({ ...extra, quantity: quantity, init: true })
   }
 
   checkSideDish = (index) => {
     var checked = this.state.checked
+    var extra = {}
+    if (!this.state.init) {
+      checked = this.props.itemInfo.checked
+      extra = {
+        quantity: this.props.itemInfo.quantity
+      }
+    }
     if (checked.includes(index)) {
       checked.splice(checked.indexOf(index), 1)
     }
@@ -53,7 +64,7 @@ export default class Detail extends Component {
       checked.push(index)
     }
 
-    this.setState({ checked: checked })
+    this.setState({ ...extra, checked: checked, init: true })
   }
 
   onSubmit = () => {
@@ -66,13 +77,19 @@ export default class Detail extends Component {
   }
 
   onClose = () => {
-    this.setState({ checked: [], quantity: 1 })
+    this.setState({ checked: [], quantity: 1, init: false })
     this.props.onClose()
   }
 
   render() {
     let item = this.props.item;
     var totalPrice = item ? item.price : null;
+    // if (!this.state.init)
+    //   this.setState({
+    //     ...this.props.itemInfo,
+    //     init: true
+    //   });
+    var info = this.state.init ? this.state : this.props.itemInfo
 
     return (this.props.trigger) ? (
       <div className="popup">
@@ -94,7 +111,7 @@ export default class Detail extends Component {
                 <h3 className="specs-last">Unit Price</h3>
                 <p>{item.detail.sku}</p>
                 <p>{item.detail.desc}</p>
-                <p className="specs-last specs-price">kr {item.price.toFixed(2)}</p>
+                <p className="specs-last specs-price">${item.price.toFixed(2)}</p>
               </div>
               <div className="divider"></div>
               <div className="quantity-row">
@@ -105,12 +122,12 @@ export default class Detail extends Component {
                       fill: "#2C3A57",
                       border: "2px solid #C8CCD4"
                     }}
-                    onClick={() => { this.setQuantity(this.state.quantity - 1) }}
+                    onClick={() => { this.setQuantity(info.quantity - 1) }}
                   />
-                  <span className="cart-quantity-label">{this.state.quantity}</span>
+                  <span className="cart-quantity-label">{info.quantity}</span>
                   <Plus
                     className="cart-quantity"
-                    onClick={() => { this.setQuantity(this.state.quantity + 1) }}
+                    onClick={() => { this.setQuantity(info.quantity + 1) }}
                   />
                 </div>
               </div>
@@ -127,7 +144,7 @@ export default class Detail extends Component {
                   fontSize: "15px",
                   fontWeight: "normal"
                 }} >
-                  Selected quantity: {this.state.checked.length}
+                  Selected quantity: {info.checked.length}
                 </span>
               </h3>
               <h3 style={{
@@ -139,11 +156,12 @@ export default class Detail extends Component {
                 Please select on of the properties below
               </h3>
               {item.sideDish.map((d, index) => {
-                let checked = this.state.checked.includes(index);
+                let checked = info.checked.includes(index);
                 if (checked) totalPrice += d.price;
                 return <SideDish
                   key={index}
                   item={d}
+                  checked={checked}
                   onChange={() => { this.checkSideDish(index) }}
                 />
               })}
@@ -151,7 +169,7 @@ export default class Detail extends Component {
             <div className="add-container">
               <div className="add-button" onClick={this.onSubmit}>
                 <CartLogo />
-                <h3>Kr {(totalPrice * this.state.quantity).toFixed(2)} </h3>
+                <h3>${(totalPrice * info.quantity).toFixed(2)} </h3>
               </div>
             </div>
           </div>

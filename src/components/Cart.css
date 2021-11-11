@@ -7,7 +7,7 @@
     width: 350px;
     background: #fff;
     box-shadow: #000;
-    z-index: 0;
+    z-index: 2;
     box-shadow: -2px 0px 10px grey;
 }
 
@@ -40,7 +40,6 @@
     border: none;
     padding: 5px 15px;
     border-radius: 20px;
-    cursor: pointer;
     font-size: 15px;
     font-weight: bold;
     float: right;
@@ -65,7 +64,14 @@
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
     border: 1px solid rgb(230, 230, 230);
-    margin: 0 0 10px 0
+    margin: 0 0 10px 0;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.cart-item-container:hover {
+    border: 1px solid grey;
+    z-index: 99;
 }
 
 .cart-item-image-wrap {

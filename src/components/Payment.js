@@ -72,7 +72,7 @@ const Payment = (props) => {
       <div className="main-container">
         <div className="payment-container">
           <p className="header-font" >
-            Business name <span style={{ float: "right" }}> Kr {totalPay.toFixed(2)}</span>
+            Business name <span style={{ float: "right" }}> ${totalPay.toFixed(2)}</span>
           </p>
           <p className="header-font" style={{
             fontSize: "14px",
@@ -119,7 +119,7 @@ const Payment = (props) => {
               </div>
             </form>
             <div className="pay-button">
-              Pay Kr {totalPay.toFixed(2)}
+              Pay ${totalPay.toFixed(2)}
             </div>
           </div>
           <Link to="/" style={{ textDecoration: "none" }} >
