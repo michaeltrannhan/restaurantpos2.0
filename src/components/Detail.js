@@ -41,9 +41,9 @@ export default class Detail extends Component {
   }
 
   setQuantity = (quantity) => {
-    var extra = this.state.init ? {} : {
+    var extra = this.props.itemInfo && !this.state.init ? {
       checked: this.props.itemInfo.checked
-    }
+    } : {}
     if (quantity >= 0)
       this.setState({ ...extra, quantity: quantity, init: true })
   }
@@ -51,7 +51,7 @@ export default class Detail extends Component {
   checkSideDish = (index) => {
     var checked = this.state.checked
     var extra = {}
-    if (!this.state.init) {
+    if (this.props.itemInfo && !this.state.init) {
       checked = this.props.itemInfo.checked
       extra = {
         quantity: this.props.itemInfo.quantity
@@ -89,7 +89,9 @@ export default class Detail extends Component {
     //     ...this.props.itemInfo,
     //     init: true
     //   });
-    var info = this.state.init ? this.state : this.props.itemInfo
+    var info = this.state
+    if (this.props.itemInfo && !this.state.init)
+      info = this.props.itemInfo
 
     return (this.props.trigger) ? (
       <div className="popup">

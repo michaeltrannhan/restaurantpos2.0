@@ -123,7 +123,7 @@ class Home extends Component {
   }
 
   getMenu = () => {
-    return food.filter(f => f.categoryID == this.state.chosen)
+    return food.filter(f => f.categoryID === this.state.chosen)
   }
 
   // Cart

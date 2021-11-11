@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 import './Cart.css';
@@ -7,32 +7,13 @@ import { ReactComponent as Plus } from "./assets/svg/plus.svg";
 import { ReactComponent as Minus } from "./assets/svg/minus.svg";
 
 const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, editItem }) => {
-  const [plus, setPlus] = useState("red")
-  const [minus, setMinus] = useState("#2C3A57")
-
-  const onMouseLeavePlus = () => {
-    setPlus("red");
-  }
-
-  const onMouseDownPlus = () => {
-    setPlus("#FC9393");
-  }
-
-  const onMouseUpPlus = () => {
-    setPlus("red");
+  const onPlus = (e) => {
+    e.stopPropagation();
     setQuantity(id - 1, quantity + 1);
   }
 
-  const onMouseLeaveMinus = () => {
-    setMinus("#2C3A57");
-  }
-
-  const onMouseDownMinus = () => {
-    setMinus("#C8CCD4");
-  }
-
-  const onMouseUpMinus = () => {
-    setMinus("#2C3A57");
+  const onMinus = (e) => {
+    e.stopPropagation();
     setQuantity(id - 1, quantity - 1);
   }
 
@@ -68,20 +49,15 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
         <Minus className="cart-quantity"
           style={{
             marginLeft: "80px",
-            fill: minus,
+            fill: "#2C3A57",
             border: "2px solid #C8CCD4"
           }}
-          onMouseLeave={onMouseLeaveMinus}
-          onMouseDown={onMouseDownMinus}
-          onMouseUp={onMouseUpMinus}
+          onClick={onMinus}
         />
         <span className="cart-quantity-label">{quantity}</span>
         <Plus
           className="cart-quantity"
-          style={{ fill: plus }}
-          onMouseLeave={onMouseLeavePlus}
-          onMouseDown={onMouseDownPlus}
-          onMouseUp={onMouseUpPlus}
+          onClick={onPlus}
         />
       </div>
       <span className="cart-item-price">${totalPrice.toFixed(2)}</span>
