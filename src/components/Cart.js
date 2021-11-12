@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom'
 
 import './Cart.css';
@@ -7,6 +7,9 @@ import { ReactComponent as Plus } from "./assets/svg/plus.svg";
 import { ReactComponent as Minus } from "./assets/svg/minus.svg";
 
 const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, editItem }) => {
+  const [editingQuantity, setEditingQuantity] = useState(false)
+  var value = quantity
+
   const onPlus = (e) => {
     e.stopPropagation();
     setQuantity(id - 1, quantity + 1);
@@ -54,7 +57,36 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
           }}
           onClick={onMinus}
         />
-        <span className="cart-quantity-label">{quantity}</span>
+        {
+          editingQuantity ? <textarea
+            autoFocus
+            defaultValue={quantity}
+            className="cart-quantity-label text-area"
+            rows="1"
+            onKeyDown={(e) => {
+              if (e.key === "Enter")
+                e.target.blur();
+            }}
+            onClick={(e) => {
+              e.stopPropagation()
+            }}
+            onFocus={(e) => e.target.select()}
+            onChange={(e) => {
+              value = e.target.value
+            }}
+            onBlur={() => {
+              setQuantity(id - 1, Number(value))
+              setEditingQuantity(false)
+            }}
+          ></textarea> :
+            <span
+              className="cart-quantity-label"
+              onClick={(e) => {
+                e.stopPropagation()
+                setEditingQuantity(true)
+              }}
+            >{quantity}</span>
+        }
         <Plus
           className="cart-quantity"
           onClick={onPlus}

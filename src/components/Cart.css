@@ -70,7 +70,7 @@
 }
 
 .cart-item-container:hover {
-    border: 1px solid grey;
+    border: 3px solid grey;
     z-index: 99;
 }
 
@@ -137,11 +137,20 @@
 .cart-quantity-label {
     display: inline-block;
     width: 70px;
-    height: 20px;
+    height: 25px;
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     vertical-align: top;
+}
+
+.text-area {
+    resize: none;
+    white-space: normal;
+    text-align: justify;
+    -moz-text-align-last: center;
+    /* Firefox 12+ */
+    text-align-last: center;
 }
 
 .cart-item-price {
@@ -190,6 +199,11 @@
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.cart-payment:hover {
+    opacity: 0.5;
 }
 
 .cart-payment p {

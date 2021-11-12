@@ -171,4 +171,5 @@
 
 .search:focus {
     width: 300px;
+    outline: 2px solid #2C3A57
 }

@@ -25,6 +25,25 @@ export const categories = [
   { id: 5, image: Candy, name: 'Candy' },
 ]
 
+export function specialColor(special) {
+  /*
+    Assign colors to a special ribbon of
+    an item. If not set explicitly for 
+    a type return a grey-ish theme.
+  */
+  console.log(special);
+  if (special.toLowerCase() === "bestseller")
+    return ["#79A70A", "#9BC90D"]
+  else if (special.toLowerCase() === "hot")
+    return ["#a70a0a", "#c90d0d"]
+  else if (special.toLowerCase() === "discount")
+    return ["#a7a40a", "#c9c60d"]
+  else if (special.toLowerCase() === "coupon")
+    return ["#0a82a7", "#0d94c9"]
+  else
+    return ["grey", "#c7c7c7"]
+}
+
 export const food = [
   {
     id: 0, name: "Hamburger", image: Hamburger, price: 123.00,
@@ -44,7 +63,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Bestseller"
   },
   {
     id: 1, name: "Grilled squid satay", image: GrilledSquid, price: 241.69,
@@ -64,7 +84,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Hot"
   },
   {
     id: 2, name: "Chicken nuggets", image: ChickenNuggets, price: 51241.12,
@@ -84,7 +105,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Discount"
   },
   {
     id: 3, name: "Coca Cola", image: CokeMenu, price: 5126.25,
@@ -104,7 +126,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Coupon"
   },
   {
     id: 4, name: "Kimchi", image: Kimchi, price: 6426.25,
@@ -124,7 +147,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 5, name: "Tomato & potato hybridization", image: TomatoPotato, price: 862.64,
@@ -144,7 +168,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 6, name: "Salad", image: Salad, price: 325.64,
@@ -164,7 +189,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 7, name: "Medium rare steak", image: Steak, price: 982.22,
@@ -184,7 +210,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 8, name: "Raw pork", image: Pork, price: 77.22,
@@ -208,7 +235,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 9, name: "Don't ask me, this is just an example", image: Weeb, price: 10.01,
@@ -240,6 +268,7 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
 ]
