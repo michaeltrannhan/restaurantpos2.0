@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom'
 
 import './Cart.css';
+import { ReactComponent as Delete } from "./assets/svg/delete.svg";
 import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 import { ReactComponent as Plus } from "./assets/svg/plus.svg";
 import { ReactComponent as Minus } from "./assets/svg/minus.svg";
@@ -28,6 +29,13 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
       <div className="cart-item-image-wrap">
         <img src={image} alt="Coke" className="cart-item-image" ></img>
       </div>
+      <Delete
+        className="delete"
+        onClick={(e) => {
+          e.stopPropagation();
+          setQuantity(id - 1, 0)
+        }}
+      />
       <div>
         <p className="cart-text-wrap cart-item-text">
           <span className="cart-item-text" style={{ color: "red", textOverflow: "ellipsis" }}>
@@ -52,8 +60,8 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
         <Minus className="cart-quantity"
           style={{
             marginLeft: "80px",
-            fill: "#2C3A57",
-            border: "2px solid #C8CCD4"
+            "--hard": "#2C3A57",
+            "--soft": "#C8CCD4"
           }}
           onClick={onMinus}
         />

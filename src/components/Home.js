@@ -207,7 +207,6 @@ class Home extends Component {
           <p className="home-font" > Back to Home </p>
           <div className="search-container">
             <input
-              className="search"
               type="text"
               placeholder="Search.."
               onChange={this.onSearch}
@@ -223,7 +222,7 @@ class Home extends Component {
                     key={index}
                     onMouseDown={() => { this.setChosenFood(index) }}
                   >
-                    <div>
+                    <div className="img-wrap">
                       <img src={food[index].image} alt={food[index].name} />
                     </div>
                     <h5>{food[index].name} </h5>

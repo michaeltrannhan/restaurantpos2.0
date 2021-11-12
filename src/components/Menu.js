@@ -6,7 +6,7 @@ import { ReactComponent as CartHover } from "./assets/svg/hover-cart.svg";
 
 
 
-const Item = ({ item, onClick, onClickCart }) => {
+const Item = ({ id, item, onClick, onClickCart }) => {
   const [Logo, setLogo] = useState(CartLogo)
   const [primary, secondary] = specialColor(item.special)
 
@@ -36,7 +36,7 @@ const Item = ({ item, onClick, onClickCart }) => {
         <div>
           <p className="menu-text-wrap menu-item-text">
             <span className="menu-item-text" style={{ color: "red" }}>
-              {item.id + 1}.
+              {id + 1}.
             </span>
             {" " + item.name}
           </p>
@@ -62,9 +62,10 @@ class Menu extends Component {
         <p className="menu-category-font">{this.props.category}</p>
         <div className="menu-line"></div>
         <section className="menu-main-container">
-          {this.props.items.map(item => {
+          {this.props.items.map((item, index) => {
             return <Item
-              key={item.id}
+              key={index}
+              id={index}
               item={item}
               onClick={() => { this.props.onClick(item.id) }}
               onClickCart={(e) => {

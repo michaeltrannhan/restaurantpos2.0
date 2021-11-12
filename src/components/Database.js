@@ -193,7 +193,7 @@ export const food = [
     special: ""
   },
   {
-    id: 7, name: "Medium rare steak", image: Steak, price: 982.22,
+    id: 7, name: "Medium rare steak 123 13 152  123 123 1214 11 4 124 124 14 1 ", image: Steak, price: 982.22,
     sideDish: [
       {
         desc: "But it's chicken",

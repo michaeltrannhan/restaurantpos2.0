@@ -123,8 +123,8 @@ export default class Detail extends Component {
                 <div className="cart-item-quantity quantity-right">
                   <Minus className="cart-quantity"
                     style={{
-                      fill: "#2C3A57",
-                      border: "2px solid #C8CCD4"
+                      "--hard": "#2C3A57",
+                      "--soft": "#C8CCD4"
                     }}
                     onClick={() => { this.setQuantity(info.quantity - 1) }}
                   />
