@@ -59,8 +59,10 @@ class Menu extends Component {
   render() {
     return (
       <div className="menu-container" >
-        <p className="menu-category-font">{this.props.category}</p>
-        <div className="menu-line"></div>
+        <div className="menu-title">
+          <p className="menu-category-font">{this.props.category}</p>
+          <div className="menu-line"></div>
+        </div>
         <section className="menu-main-container">
           {this.props.items.map((item, index) => {
             return <Item
