@@ -92,6 +92,25 @@ export const categories = [
   { id: 7, image: SideDish, name: 'Side Dishes' }
 ]
 
+export function specialColor(special) {
+  /*
+    Assign colors to a special ribbon of
+    an item. If not set explicitly for 
+    a type return a grey-ish theme.
+  */
+  console.log(special);
+  if (special.toLowerCase() === "bestseller")
+    return ["#79A70A", "#9BC90D"]
+  else if (special.toLowerCase() === "hot")
+    return ["#a70a0a", "#c90d0d"]
+  else if (special.toLowerCase() === "discount")
+    return ["#a7a40a", "#c9c60d"]
+  else if (special.toLowerCase() === "coupon")
+    return ["#0a82a7", "#0d94c9"]
+  else
+    return ["grey", "#c7c7c7"]
+}
+
 export const food = [
   {
     id: 0, name: "Pho", image: Pho, price: 123.00,
@@ -111,7 +130,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Bestseller"
   },
   {
     id: 1, name: "Bun Rieu", image: BunRieu, price: 241.69,
@@ -131,7 +151,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Hot"
   },
   {
     id: 2, name: "Pha Lau", image: PhaLau, price: 51241.12,
@@ -151,7 +172,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Discount"
   },
   {
     id: 3, name: "Chicken Curry", image: Curry, price: 5126.25,
@@ -171,7 +193,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: "Coupon"
   },
   {
     id: 4, name: "Hu tieu", image: Hutieu, price: 6426.25,
@@ -191,7 +214,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 5, name: "Com tam", image: Comtam, price: 862.64,
@@ -211,7 +235,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 6, name: "Sticky Rice", image: Xoi, price: 325.64,
@@ -231,7 +256,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 0
+    categoryID: 0,
+    special: ""
   },
   {
     id: 7, name: "Banh My", image: Banhmy, price: 982.22,
@@ -255,7 +281,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 8, name: "Hamburger", image: Burger, price: 77.22,
@@ -279,7 +306,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 9, name: "Banh trang tron", image: BTT, price: 10.01,
@@ -311,7 +339,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 10, name: "Fried fish balls", image: Cavien, price: 77.22,
@@ -335,7 +364,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 11, name: "Grilled chicken legs", image: Changa, price: 77.22,
@@ -351,7 +381,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 12, name: "banh trang nuong", image: BTN, price: 77.22,
@@ -379,7 +410,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 13, name: "Kimbap", image: Kimbap, price: 77.22,
@@ -407,7 +439,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 1
+    categoryID: 1,
+    special: ""
   },
   {
     id: 14, name: "Grilled crab", image: Crab, price: 77.22,
@@ -427,7 +460,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   {
     id: 15, name: "Lobster", image: Lobster, price: 77.22,
@@ -443,7 +477,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   {
     id: 16, name: "Fried Shrimp", image: Shrimp, price: 77.22,
@@ -471,7 +506,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   {
     id: 17, name: "Snail", image: Snail, price: 77.22,
@@ -491,7 +527,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   {
     id: 18, name: "Salmon Filet", image: Salmon, price: 77.22,
@@ -511,7 +548,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   {
     id: 19, name: "Tuna Filet", image: Tuna, price: 77.22,
@@ -531,7 +569,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 2
+    categoryID: 2,
+    special: ""
   },
   ///meat from 20
   {
@@ -552,7 +591,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   {
     id: 21, name: "Pork", image: Pork, price: 77.22,
@@ -572,7 +612,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   {
     id: 22, name: "Pork meatballs", image: Meatball, price: 77.22,
@@ -592,7 +633,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   {
     id: 23, name: "Grilled Chicken", image: chicken, price: 77.22,
@@ -612,7 +654,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   {
     id: 24, name: "Chicken Nuggets", image: nuggets, price: 77.22,
@@ -632,7 +675,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   {
     id: 25, name: "Bacon", image: bacon, price: 77.22,
@@ -652,7 +696,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 3
+    categoryID: 3,
+    special: ""
   },
   //drinks starts from 26
   {
@@ -673,7 +718,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 27, name: "Whiskey", image: whiskey, price: 100.22,
@@ -693,7 +739,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 28, name: "Champagne", image: champange, price: 70.22,
@@ -713,7 +760,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 29, name: "Rượu đế", image: ruoude, price: 50.22,
@@ -733,7 +781,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 30, name: "Juice", image: juice, price: 30.22,
@@ -753,7 +802,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 31, name: "Soft drinks", image: coke, price: 50.22,
@@ -773,7 +823,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 32, name: "Water", image: water, price: 50.22,
@@ -797,7 +848,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   {
     id: 33, name: "Milk", image: milk, price: 20.22,
@@ -821,7 +873,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 4
+    categoryID: 4,
+    special: ""
   },
   //desert starts from 34
   {
@@ -842,7 +895,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 35, name: "Cupcakes", image: cupcakes, price: 50.22,
@@ -862,7 +916,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 36, name: "Pancakes", image: pancakes, price: 50.22,
@@ -886,7 +941,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 37, name: "Chè", image: che, price: 50.22,
@@ -906,7 +962,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 38, name: "Bánh trôi nước", image: banhtroinuoc, price: 50.22,
@@ -926,7 +983,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 39, name: "Pie", image: pie, price: 50.22,
@@ -946,7 +1004,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 40, name: "Ice cream", image: icecream, price: 50.22,
@@ -974,7 +1033,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 41, name: "Cream puffs", image: puffs, price: 50.22,
@@ -994,7 +1054,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   {
     id: 42, name: "Crème caramel", image: flan, price: 50.22,
@@ -1018,7 +1079,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 5
+    categoryID: 5,
+    special: ""
   },
   //vegan from 43
   {
@@ -1039,7 +1101,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   {
     id: 44, name: "Salad", image: Salad, price: 50.22,
@@ -1059,7 +1122,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   {
     id: 45, name: "Seaweed", image: seaweed, price: 50.22,
@@ -1079,7 +1143,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   {
     id: 46, name: "Soya fermented", image: fermented, price: 50.22,
@@ -1099,7 +1164,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   {
     id: 47, name: "Cereal", image: cereal, price: 50.22,
@@ -1119,7 +1185,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   {
     id: 48, name: "Vegetarian pizaa", image: vegepizza, price: 50.22,
@@ -1143,7 +1210,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 6
+    categoryID: 6,
+    special: ""
   },
   //Toppings from 49
   {
@@ -1160,7 +1228,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 50, name: "Bread", image: bread, price: 50.22,
@@ -1176,7 +1245,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 51, name: "Soy sauce", image: soysauce, price: 50.22,
@@ -1192,7 +1262,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 52, name: "Hot chili sauce", image: hotsauce, price: 50.22,
@@ -1208,7 +1279,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 53, name: "Rice", image: rice, price: 50.22,
@@ -1224,7 +1296,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 54, name: "Noodles", image: noodles, price: 50.22,
@@ -1240,7 +1313,8 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
   {
     id: 55, name: "Weebs", image: weebs, price: 9999.8888,
@@ -1272,6 +1346,7 @@ export const food = [
       baking: "040",
       decor: "04"
     },
-    categoryID: 7
+    categoryID: 7,
+    special: ""
   },
 ]

@@ -1,10 +1,14 @@
 import React, { useState, Component } from 'react';
 import './Menu.css';
+import { specialColor } from "./Database"
 import { ReactComponent as CartLogo } from "./assets/svg/mini-cart.svg";
 import { ReactComponent as CartHover } from "./assets/svg/hover-cart.svg";
 
-const Item = ({ id, name, price, image, onClick, onClickCart }) => {
+
+
+const Item = ({ id, item, onClick, onClickCart }) => {
   const [Logo, setLogo] = useState(CartLogo)
+  const [primary, secondary] = specialColor(item.special)
 
   const onMouseEnterCart = () => {
     setLogo(CartHover)
@@ -19,18 +23,26 @@ const Item = ({ id, name, price, image, onClick, onClickCart }) => {
       className="menu-item-container"
       onClick={onClick}
     >
-      <img src={image} alt="Cupcake"></img>
+      {item.special ?
+        <div
+          className="ribbon"
+          style={{
+            "--primary": primary,
+            "--secondary": secondary
+          }}
+        ><span>{item.special}</span></div> : ""}
+      <img src={item.image} alt="Cupcake"></img>
       <div className="menu-item-description" >
         <div>
           <p className="menu-text-wrap menu-item-text">
             <span className="menu-item-text" style={{ color: "red" }}>
               {id + 1}.
             </span>
-            {" " + name}
+            {" " + item.name}
           </p>
         </div>
         <p className="menu-item-text menu-price">
-          ${price.toFixed(2)}
+          ${item.price.toFixed(2)}
         </p>
         <Logo className="menu-cart"
           onMouseEnter={onMouseEnterCart}
@@ -50,13 +62,11 @@ class Menu extends Component {
         <p className="menu-category-font">{this.props.category}</p>
         <div className="menu-line"></div>
         <section className="menu-main-container">
-          {this.props.items.map(item => {
+          {this.props.items.map((item, index) => {
             return <Item
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              price={item.price}
-              image={item.image}
+              key={index}
+              id={index}
+              item={item}
               onClick={() => { this.props.onClick(item.id) }}
               onClickCart={(e) => {
                 e.stopPropagation();

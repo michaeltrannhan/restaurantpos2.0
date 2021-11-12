@@ -35,6 +35,7 @@ const SideDish = ({ item, onChange, checked }) => {
 
 export default class Detail extends Component {
   state = {
+    editingQuantity: false,
     init: false,
     quantity: 1,
     checked: []
@@ -92,12 +93,13 @@ export default class Detail extends Component {
     var info = this.state
     if (this.props.itemInfo && !this.state.init)
       info = this.props.itemInfo
+    var value = info.quantity
 
     return (this.props.trigger) ? (
       <div className="popup">
         <div className="popup-inner">
           <div className="header">
-            ADD TO CART
+            {item.name}
             <Close className="close-button" onClick={this.onClose}></Close>
           </div>
           <div className="detail-container">
@@ -121,12 +123,38 @@ export default class Detail extends Component {
                 <div className="cart-item-quantity quantity-right">
                   <Minus className="cart-quantity"
                     style={{
-                      fill: "#2C3A57",
-                      border: "2px solid #C8CCD4"
+                      "--hard": "#2C3A57",
+                      "--soft": "#C8CCD4"
                     }}
                     onClick={() => { this.setQuantity(info.quantity - 1) }}
                   />
-                  <span className="cart-quantity-label">{info.quantity}</span>
+                  {
+                    this.state.editingQuantity ? <textarea
+                      autoFocus
+                      defaultValue={value}
+                      className="cart-quantity-label text-area"
+                      rows="1"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter")
+                          console.log("Enter");
+                      }}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        value = e.target.value
+                      }}
+                      onBlur={() => {
+                        this.setQuantity(Number(value))
+                        this.setState({ editingQuantity: false })
+                      }}
+                    ></textarea> :
+                      <span
+                        className="cart-quantity-label"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          this.setState({ editingQuantity: true })
+                        }}
+                      >{info.quantity}</span>
+                  }
                   <Plus
                     className="cart-quantity"
                     onClick={() => { this.setQuantity(info.quantity + 1) }}
