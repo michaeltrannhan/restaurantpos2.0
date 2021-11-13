@@ -16,43 +16,7 @@ class Home extends Component {
     chosenFood: null,
     editIndex: null,
     searchResult: [],
-    cart: [
-      {
-        id: 0,
-        quantity: 1,
-        sideDish: []
-      },
-      {
-        id: 2,
-        quantity: 1,
-        sideDish: []
-      },
-      {
-        id: 3,
-        quantity: 1,
-        sideDish: []
-      },
-      {
-        id: 4,
-        quantity: 1,
-        sideDish: []
-      },
-      {
-        id: 6,
-        quantity: 1,
-        sideDish: []
-      },
-      {
-        id: 8,
-        quantity: 1,
-        sideDish: [0]
-      },
-      {
-        id: 9,
-        quantity: 9,
-        sideDish: [0, 1, 2, 3]
-      },
-    ],
+    cart: [],
   }
 
   // Search

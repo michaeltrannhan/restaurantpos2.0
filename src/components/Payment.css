@@ -148,10 +148,8 @@
 
 .qr-container {
     position: relative;
-    display: inline-block;
-    flex-direction: column;
-    vertical-align: middle;
-    width: 100%;
+    margin: 0 auto;
+    width: 50%;
     background: white;
 }
 
@@ -165,7 +163,7 @@
     display: flex;
     width: 100%;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
