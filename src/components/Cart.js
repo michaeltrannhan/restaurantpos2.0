@@ -43,7 +43,7 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
           </span>
           {name}
         </p>
-        <div style={{ minHeight: "10px" }}>
+        <div>
           {sideDish.map((d, index) => {
             return (
               <p

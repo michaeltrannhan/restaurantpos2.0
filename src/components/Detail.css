@@ -39,6 +39,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+    fill: #3D3D3D;
 }
 
 .detail-container {
@@ -53,7 +54,8 @@
     /* background: green; */
 }
 
-.image-container div {
+.image-container .img-wrap {
+    position: relative;
     display: flex;
     width: 160px;
     height: 160px;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Cart.css';
 import './Detail.css';
+import './Menu.css';
+import { specialColor } from "./Database"
 
 import { ReactComponent as CartLogo } from "./assets/svg/cart.svg";
 import { ReactComponent as Close } from "./assets/svg/close.svg";
@@ -85,15 +87,11 @@ export default class Detail extends Component {
   render() {
     let item = this.props.item;
     var totalPrice = item ? item.price : null;
-    // if (!this.state.init)
-    //   this.setState({
-    //     ...this.props.itemInfo,
-    //     init: true
-    //   });
     var info = this.state
     if (this.props.itemInfo && !this.state.init)
       info = this.props.itemInfo
     var value = info.quantity
+    const [primary, secondary] = item ? specialColor(item.special) : []
 
     return (this.props.trigger) ? (
       <div className="popup">
@@ -104,7 +102,15 @@ export default class Detail extends Component {
           </div>
           <div className="detail-container">
             <div className="image-container">
-              <div>
+              <div className="img-wrap" >
+                {item.special ?
+                  <div
+                    className="ribbon"
+                    style={{
+                      "--primary": primary,
+                      "--secondary": secondary
+                    }}
+                  ><span>{item.special}</span></div> : ""}
                 <img src={item.image} alt={item.name}></img>
               </div>
             </div>
@@ -136,7 +142,7 @@ export default class Detail extends Component {
                       rows="1"
                       onKeyDown={(e) => {
                         if (e.key === "Enter")
-                          console.log("Enter");
+                          e.target.blur();
                       }}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
@@ -183,7 +189,7 @@ export default class Detail extends Component {
                 fontWeight: "normal",
                 marginBottom: "20px",
               }} >
-                Please select on of the properties below
+                Select some of the side dishes below to eat with:
               </h3>
               {item.sideDish.map((d, index) => {
                 let checked = info.checked.includes(index);

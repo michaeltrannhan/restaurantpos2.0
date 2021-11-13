@@ -123,7 +123,21 @@ class Home extends Component {
   }
 
   getMenu = () => {
-    return food.filter(f => f.categoryID === this.state.chosen)
+    return food.filter(
+      f => f.categoryID === this.state.chosen).sort((a, b) => {
+        const translated = (s) => {
+          if (s === "Coupon") return 0
+          else if (s === "Discount") return 1
+          else if (s === "Bestseller") return 2
+          else if (s === "Hot") return 3
+          else if (s !== "") return -1
+          else return -2
+        }
+
+        if (translated(a.special) > translated(b.special)) return -1
+        if (translated(a.special) === translated(b.special)) return 0
+        return 1
+      })
   }
 
   // Cart
@@ -185,13 +199,32 @@ class Home extends Component {
     this.setState({ cart: cart })
   }
   editCartItem = (item) => {
-    let cart = this.state.cart
+    var cart = this.state.cart
     if (item.quantity === 0) {
       cart.splice(this.state.editIndex, 1)
+      this.setState({ cart: cart })
       return
     }
-    cart[this.state.editIndex].quantity = item.quantity
-    cart[this.state.editIndex].sideDish = item.sideDish
+    let index = cart.findIndex(
+      (i) => {
+        return (
+          i.id === item.id &&
+          JSON.stringify(i.sideDish) === JSON.stringify(item.sideDish)
+        )
+      }
+    )
+    if (index > -1 && index !== this.state.editIndex) {
+      cart[this.state.editIndex] = {
+        ...cart[this.state.editIndex],
+        quantity: cart[index].quantity + item.quantity
+      }
+      cart.splice(index, 1)
+    }
+    else {
+      cart[this.state.editIndex].quantity = item.quantity
+      cart[this.state.editIndex].sideDish = item.sideDish
+    }
+
     this.setState({ cart: cart })
   }
 
@@ -261,7 +294,7 @@ class Home extends Component {
           item={this.state.editIndex !== null ? food[this.state.cart[this.state.editIndex].id] :
             (this.state.chosenFood !== null ? food[this.state.chosenFood] :
               null)}
-          itemInfo={this.state.editIndex ?
+          itemInfo={this.state.editIndex !== null ?
             {
               quantity: this.state.cart[this.state.editIndex].quantity,
               checked: this.state.cart[this.state.editIndex].sideDish
@@ -273,7 +306,7 @@ class Home extends Component {
             else
               this.setChosenFood(null)
           }}
-          onSubmit={this.state.editIndex ? this.editCartItem : this.addToCart}
+          onSubmit={this.state.editIndex !== null ? this.editCartItem : this.addToCart}
         />
       </div>
     );

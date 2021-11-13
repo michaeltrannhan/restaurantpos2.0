@@ -1,9 +1,21 @@
+.no-scrollbar {
+    width: 100%;
+    height: 730px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 .main-container {
     background: #F8F8F8;
     display: flex;
     width: 100%;
-    height: 730px;
-    align-items: center;
+    /* height: 730px; */
+    padding: 20px 0 20px 0;
+    /* align-items: center; */
     justify-content: center;
 }
 
@@ -24,9 +36,21 @@
     background: white;
     margin-top: 20px;
     padding: 10px;
+    transition: all 0.3s ease 0s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item-container:hover {
+    background: #a9ffdf;
+}
+
+.item-container:hover .circle-select {
+    fill: #577C8B;
 }
 
 .item-hint {
+    position: relative;
     display: block;
     height: 50px;
     background: #FFFBE7;
@@ -35,8 +59,21 @@
     font-style: italic;
     font-weight: bold;
     color: #dac47e;
+    border-radius: 5px;
     padding-top: 17px;
     padding-left: 20px;
+}
+
+.close {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 10px;
+    top: 5px;
+    font-style: normal;
+    font-size: 15px;
+    cursor: pointer;
+    fill: #dac47e;
 }
 
 .method-container {
@@ -49,11 +86,7 @@
     width: 20px;
     height: 20px;
     vertical-align: middle;
-    cursor: pointer;
-}
-
-.circle-select:hover {
-    fill: #577C8B;
+    transition: all 0.3s ease 0s;
 }
 
 .circle-label {
@@ -65,8 +98,9 @@
 }
 
 .brand {
-    margin: 10px 0px 0 0px;
+    margin: 10px 0 0 10px;
     height: 40px;
+    width: 40px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -91,6 +125,34 @@
     width: 20px;
     height: 20px;
     fill: #837371;
+}
+
+.qr-container {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    vertical-align: middle;
+    width: 100%;
+    background: white;
+}
+
+.qr-container img {
+    width: 100%;
+    height: auto;
+}
+
+.qr-label {
+    background: #3EEAAA;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2C3A57;
 }
 
 .input-container {
@@ -137,10 +199,12 @@
     color: #2C3A57;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
 .pay-button:hover {
-    opacity: 0.7;
+    background: #2C3A57;
+    color: white;
 }
 
 .cancel-button {
@@ -156,10 +220,11 @@
     border-radius: 3px;
     padding: 20px;
     cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
 .cancel-button:hover {
-    background: #577C8B;
+    background: #3EEAAA;
     color: white;
 }
 

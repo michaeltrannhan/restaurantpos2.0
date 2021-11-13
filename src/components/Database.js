@@ -32,7 +32,6 @@ import Shrimp from "./assets/png/menu/Fishery/shrimp.png"
 import Snail from "./assets/png/menu/Fishery/snail.png"
 import Salmon from "./assets/png/menu/Fishery/salmon.png"
 import Tuna from "./assets/png/menu/Fishery/tuna.png"
-import squid from "./assets/png/menu/Fishery/grilled_squid.png"
 
 //Meat!!
 import Beef from "./assets/png/menu/Meat/steak.png"
@@ -41,7 +40,6 @@ import Meatball from "./assets/png/menu/Meat/meatball.png"
 import chicken from "./assets/png/menu/Meat/chicken.png"
 import nuggets from "./assets/png/menu/Meat/chicken_nuggets.png"
 import bacon from "./assets/png/menu/Meat/bacon.png"
-
 //Drinks
 import beer from "./assets/png/menu/Drinks/beer.png"
 import whiskey from "./assets/png/menu/Drinks/whiskey.png"
@@ -89,7 +87,7 @@ export const categories = [
   { id: 4, image: Drinks, name: 'Drinks' },
   { id: 5, image: Dessert, name: 'Dessert' },
   { id: 6, image: Vegan, name: 'Vegan' },
-  { id: 7, image: SideDish, name: 'Side Dishes' }
+  { id: 7, image: SideDish, name: 'Others' }
 ]
 
 export function specialColor(special) {
@@ -98,7 +96,6 @@ export function specialColor(special) {
     an item. If not set explicitly for 
     a type return a grey-ish theme.
   */
-  console.log(special);
   if (special.toLowerCase() === "bestseller")
     return ["#79A70A", "#9BC90D"]
   else if (special.toLowerCase() === "hot")
@@ -158,7 +155,7 @@ export const food = [
     id: 2, name: "Pha Lau", image: PhaLau, price: 51241.12,
     sideDish: [
       {
-        desc: "Addtional meat",
+        desc: "Additional meat",
         price: 134
       }
     ],
@@ -282,7 +279,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 1,
-    special: ""
+    special: "Bestseller"
   },
   {
     id: 8, name: "Hamburger", image: Burger, price: 77.22,
@@ -307,7 +304,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 1,
-    special: ""
+    special: "Hot"
   },
   {
     id: 9, name: "Banh trang tron", image: BTT, price: 10.01,
@@ -340,7 +337,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 1,
-    special: ""
+    special: "Hot"
   },
   {
     id: 10, name: "Fried fish balls", image: Cavien, price: 77.22,
@@ -365,7 +362,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 1,
-    special: ""
+    special: "Coupon"
   },
   {
     id: 11, name: "Grilled chicken legs", image: Changa, price: 77.22,
@@ -382,7 +379,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 1,
-    special: ""
+    special: "Discount"
   },
   {
     id: 12, name: "banh trang nuong", image: BTN, price: 77.22,
@@ -570,7 +567,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 2,
-    special: ""
+    special: "Discount"
   },
   ///meat from 20
   {
@@ -592,7 +589,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 3,
-    special: ""
+    special: "Hot"
   },
   {
     id: 21, name: "Pork", image: Pork, price: 77.22,
@@ -719,7 +716,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 4,
-    special: ""
+    special: "Bestseller"
   },
   {
     id: 27, name: "Whiskey", image: whiskey, price: 100.22,
@@ -849,7 +846,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 4,
-    special: ""
+    special: "Coupon"
   },
   {
     id: 33, name: "Milk", image: milk, price: 20.22,
@@ -984,7 +981,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 5,
-    special: ""
+    special: "Discount"
   },
   {
     id: 39, name: "Pie", image: pie, price: 50.22,
@@ -1005,13 +1002,13 @@ export const food = [
       decor: "04"
     },
     categoryID: 5,
-    special: ""
+    special: "Hot"
   },
   {
     id: 40, name: "Ice cream", image: icecream, price: 50.22,
     sideDish: [
       {
-        desc: "Cholate",
+        desc: "Chocolate",
         price: 30
       },
       {
@@ -1034,7 +1031,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 5,
-    special: ""
+    special: "Hot"
   },
   {
     id: 41, name: "Cream puffs", image: puffs, price: 50.22,
@@ -1123,7 +1120,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 6,
-    special: ""
+    special: "Coupon"
   },
   {
     id: 45, name: "Seaweed", image: seaweed, price: 50.22,
@@ -1144,7 +1141,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 6,
-    special: ""
+    special: "Bestseller"
   },
   {
     id: 46, name: "Soya fermented", image: fermented, price: 50.22,
@@ -1263,7 +1260,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 7,
-    special: ""
+    special: "Bestseller"
   },
   {
     id: 52, name: "Hot chili sauce", image: hotsauce, price: 50.22,
@@ -1314,7 +1311,7 @@ export const food = [
       decor: "04"
     },
     categoryID: 7,
-    special: ""
+    special: "Hot"
   },
   {
     id: 55, name: "Weebs", image: weebs, price: 9999.8888,
@@ -1347,6 +1344,6 @@ export const food = [
       decor: "04"
     },
     categoryID: 7,
-    special: ""
+    special: "Bestseller"
   },
 ]
