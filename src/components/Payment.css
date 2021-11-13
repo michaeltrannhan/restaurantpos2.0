@@ -127,6 +127,25 @@
     fill: #837371;
 }
 
+.info {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 10px);
+    fill: #837371;
+    cursor: pointer;
+}
+
+.info:hover {
+    fill: #aa9a98;
+}
+
+.img-hint {
+    position: absolute;
+    top: -100px;
+    width: 300px;
+    height: auto;
+}
+
 .qr-container {
     position: relative;
     display: inline-block;
@@ -179,11 +198,20 @@
     width: 100%;
     height: 35px;
     border: none;
+    border-radius: 5px;
     padding: 24px 16px 15px 10px;
     font-size: 14px;
     line-height: 1;
     outline: none;
     box-shadow: none;
+    background-image: url(./assets/svg/card.svg);
+    background-repeat: no-repeat;
+    background-position: 10px 50%;
+    transition: all 0.3s ease 0s;
+}
+
+.input-container input:focus {
+    outline: 3px solid #2C3A57;
 }
 
 .pay-button {

@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import './Payment.css'
 
 import QrImg from "./assets/png/qr.png"
+import Hint from "./assets/png/cvv_hint.png"
 
 import { ReactComponent as BackLogo } from "./assets/svg/back.svg";
 import { ReactComponent as Close } from "./assets/svg/close.svg";
+import { ReactComponent as Info } from "./assets/svg/info.svg";
 import { ReactComponent as Visa } from "./assets/svg/visa.svg";
 import { ReactComponent as MasterCard } from "./assets/svg/mastercard.svg";
 import { ReactComponent as Card } from "./assets/svg/card.svg";
@@ -16,6 +18,7 @@ import { ReactComponent as VN } from "./assets/svg/vn.svg";
 
 const TextInput = ({ IconLogo, label, half, end, onChange, fault }) => {
   const [value, setValue] = React.useState('');
+  const [hint, setHint] = React.useState(false);
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -39,15 +42,28 @@ const TextInput = ({ IconLogo, label, half, end, onChange, fault }) => {
           color: "red"
         }}
       >✻ Required</p> : ""}
-      {IconLogo ?
-        <div className="icon-container">
-          <IconLogo className="icon" />
-        </div> : ""}
-      <div className="input-container" style={IconLogo ? {
-        width: "calc(100% - 40px)",
-      } : {}}>
-        <input type="text" value={value} onChange={handleChange} />
-        <label>{label}</label>
+      <div className="input-container">
+        <input type="text"
+          style={IconLogo ? {
+            paddingLeft: "40px",
+          } : {
+            background: "unset"
+          }}
+          value={value}
+          onChange={handleChange}
+        />
+        <label
+          style={IconLogo ? {
+            left: "40px",
+          } : {}}
+        >{label}</label>
+        {end ? <Info
+          className="info"
+          onMouseEnter={() => { setHint(true) }}
+          onMouseLeave={() => { setHint(false) }}
+        /> : ""}
+        {hint ? <img className="img-hint"
+          src={Hint} alt="hint"></img> : ""}
       </div>
     </div>
   );
