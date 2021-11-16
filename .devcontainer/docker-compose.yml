@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  pos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: 17-bullseye
+    init: true
+    volumes:
+      - ..:/workspace:cached
+    ports:
+      - 3000:3000
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity

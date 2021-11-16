@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  pos:
+    container_name: restaurant-pos2
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: 17-bullseye
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_OPTIONS=--openssl-legacy-provider
+    stdin_open: true
