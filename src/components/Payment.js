@@ -173,8 +173,8 @@ const CreditPay = ({ totalPay }) => {
       <div className="pay-button"
         onClick={() => {
           var text = card.some((i) => { return i === "" }) ?
-            "Some fields are empty" :
-            "You have been scammed!"
+            "Some fields are not allowed to be empty." :
+            "Done!"
           window.alert(text)
         }}
       >

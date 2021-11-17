@@ -102,7 +102,7 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
       </div>
       <span className="cart-item-price">${totalPrice.toFixed(2)}</span>
       <span className="cart-item-price cart-item-tax">
-        (Incl. tax 10% = ${(totalPrice / 100).toFixed(2)})
+        (Incl. tax 10% = ${(totalPrice / 10).toFixed(2)})
       </span>
     </div >
   )
@@ -151,7 +151,7 @@ class Cart extends Component {
             minWidth: "135px",
             textAlign: "right"
           }}>
-            ${Math.round(totalPay * 100) / 100}
+            ${(totalPay * 1.1).toFixed(2)}
           </p>
           <p style={{
             float: 'right',
@@ -159,7 +159,7 @@ class Cart extends Component {
             minWidth: "180px",
             textAlign: "right"
           }}>
-            (Incl. tax 10% = ${Math.round(totalPay) / 100})
+            (Incl. tax 10% = ${(totalPay / 10).toFixed(2)})
           </p>
           <Link to="/payment" style={{ textDecoration: 'none' }}>
             <div
