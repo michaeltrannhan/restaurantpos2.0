@@ -109,6 +109,9 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
 }
 
 class Cart extends Component {
+  state = {
+    dine: true
+  }
 
   render() {
     var totalPay = 0;
@@ -118,7 +121,13 @@ class Cart extends Component {
         <div className="cart-header" >
           <CartLogo className="cart-logo" />
           <h1 className="cart-font" > Your cart </h1>
-          <button className="dine-button">DINE IN</button>
+          <button className="dine-button"
+            onClick={() => {
+              this.setState({ dine: !this.state.dine });
+            }}
+          >
+            {this.state.dine ? "DINE IN" : "TAKE AWAY"}
+          </button>
         </div>
         <div className="cart-main-container">
           {this.props.cart.map((c, index) => {
