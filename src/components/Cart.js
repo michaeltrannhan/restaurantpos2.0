@@ -100,7 +100,7 @@ const Item = ({ id, name, image, totalPrice, quantity, sideDish, setQuantity, ed
           onClick={onPlus}
         />
       </div>
-      <span className="cart-item-price">${totalPrice.toFixed(2)}</span>
+      <span className="cart-item-price">${(totalPrice * 1.1).toFixed(2)}</span>
       <span className="cart-item-price cart-item-tax">
         (Incl. tax 10% = ${(totalPrice / 10).toFixed(2)})
       </span>
