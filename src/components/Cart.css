@@ -44,6 +44,12 @@
     font-weight: bold;
     float: right;
     cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.dine-button:hover {
+    background: #2C3A57;
+    color: #E9F0FF;
 }
 
 .cart-main-container {
