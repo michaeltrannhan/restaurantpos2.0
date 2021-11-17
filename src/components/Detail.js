@@ -116,7 +116,7 @@ export default class Detail extends Component {
             </div>
             <div className="description">
               <div className="specs">
-                <h3>SKU</h3>
+                <h3>Stock</h3>
                 <h3>Description</h3>
                 <h3 className="specs-last">Unit Price</h3>
                 <p>{item.detail.sku}</p>
