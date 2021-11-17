@@ -6,11 +6,17 @@ import Payment from './components/Payment'
 
 const App = () => {
   const [totalPay, setTotalPay] = React.useState(0)
+  const [cart, setCart] = React.useState([])
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home setTotalPay={setTotalPay} />} />
+        <Route path="/" element={
+          <Home
+            setTotalPay={setTotalPay}
+            cart={cart}
+            setCart={setCart} />
+        } />
         <Route path="payment" element={<Payment totalPay={totalPay} />} />
       </Routes>
     </BrowserRouter >

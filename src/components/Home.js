@@ -17,6 +17,7 @@ class Home extends Component {
     editIndex: null,
     searchResult: [],
     cart: [],
+    init: false
   }
 
   // Search
@@ -106,6 +107,11 @@ class Home extends Component {
 
   // Cart
   getCartItems = () => {
+    if (!this.state.init) this.setState({
+      cart: this.props.cart,
+      init: true
+    })
+
     let cart = this.state.cart;
     var rv = [];
 
@@ -251,7 +257,10 @@ class Home extends Component {
           cart={this.getCartItems()}
           setQuantity={this.setQuantity}
           editItem={this.editItem}
-          setTotalPay={this.props.setTotalPay}
+          setTotalPay={(totalPay) => {
+            this.props.setCart(this.state.cart)
+            this.props.setTotalPay(totalPay)
+          }}
         />
         <Detail
           trigger={this.state.editIndex !== null || this.state.chosenFood !== null}
