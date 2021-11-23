@@ -152,7 +152,7 @@ export const food = [
     special: "Hot"
   },
   {
-    id: 2, name: "Pha Lau", image: PhaLau, price: 51241.12,
+    id: 2, name: "Pha Lau", image: PhaLau, price: 5141.12,
     sideDish: [
       {
         desc: "Additional meat",

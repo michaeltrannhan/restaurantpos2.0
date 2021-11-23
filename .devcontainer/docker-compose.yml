@@ -6,12 +6,13 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VARIANT: 17-bullseye
+        VARIANT: 17.1-bullseye
+        USERNAME: node
+        USER_UID: 1000
     init: true
-    volumes:
-      - ..:/workspace:cached
     ports:
       - 3000:3000
-
-    # Overrides default command so things don't shut down after the process ends.
+    volumes:
+      - ..:/workspace:cached
     command: sleep infinity
+    user: node
