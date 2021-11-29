@@ -9,6 +9,8 @@ services:
             args:
                 VARIANT: 17.1-bullseye
                 USERNAME: node
+        ports:
+            - '3001:3001'
         environment:
             - PORT=3001
         stdin_open: true

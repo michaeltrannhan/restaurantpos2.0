@@ -3,8 +3,7 @@ ARG VARIANT=17.1-bullseye
 FROM node:${VARIANT}
 
 ARG USERNAME=node
-ARG USER_UID=1000
-ARG USER_GID=${USER_UID}
+ENV PORT=3001
 
 RUN apt-get update \
     && apt-get install -y apt-utils sudo \

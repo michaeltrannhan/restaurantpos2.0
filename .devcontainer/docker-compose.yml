@@ -8,10 +8,9 @@ services:
             args:
                 VARIANT: 17.1-bullseye
                 USERNAME: node
-                USER_UID: 1000
         init: true
         environment:
-          - PORT=3001
+            - PORT=3001
         volumes:
             - ..:/workspace:cached
         command: sleep infinity
